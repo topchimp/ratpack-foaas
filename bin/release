@@ -14,6 +14,6 @@ EOF
 if [ ! -f $BUILD_DIR/Procfile ]; then
 cat <<EOF
 default_process_types:
-  web: ratpack-site/build/install/ratpack-site/bin/ratpack-site ratpack-site/build/install/ratpack-site/ratpack.groovy
+  web: foaas/build/install/foaas/bin/foaas foaas/build/install/foaas/ratpack.groovy
 EOF
 fi
