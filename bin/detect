@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # bin/use <build-dir>
-exec "$1"/bin/detect "$@"
+
+exit 0
