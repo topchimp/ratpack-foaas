@@ -4,8 +4,6 @@
 BUILD_DIR=$1
 
 echo "ratpack release running"
-echo "pwd: "
-echo `pwd`
 
 cat <<EOF
 ---
