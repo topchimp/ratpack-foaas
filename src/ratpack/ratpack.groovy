@@ -12,22 +12,22 @@ props.props = new Properties().with {
 props.engine = new SimpleTemplateEngine()
 
 ratpack {
-	handlers {
+    handlers {
 
         get(":type/:from") {
             def map = [message: props.getRenderedTemplate(pathTokens).message as String, subtitle: pathTokens['from']]
-            use (ContentNegotiationCategory) {
+            use(ContentNegotiationCategory) {
                 makeFuck map, get(TemplateRenderer)
             }
         }
 
         get(":type/:to/:from") {
             def map = props.getRenderedTemplate(pathTokens)
-            use (ContentNegotiationCategory) {
+            use(ContentNegotiationCategory) {
                 makeFuck map, get(TemplateRenderer)
             }
         }
 
-		assets "public", ["index.html"] as String[]
-	}
+        assets "public", ["index.html"] as String[]
+    }
 }
