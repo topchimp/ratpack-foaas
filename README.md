@@ -13,7 +13,7 @@ Introducing Fuck Off as a Service, voted the most revolutionary cloud platform b
 The Site
 ---
 
-Please make use of this repository's (Ratpack)[http://ratpack-framework.org] implementation of the platform to leverage the features you need so much. The deployment can be found at http://ratpack-foaas.herokuapp.com/
+Please make use of this repository's [Ratpack](http://ratpack-framework.org) implementation of the platform to leverage the features you need so much. The deployment can be found at http://ratpack-foaas.herokuapp.com/
 
 License
 ---
@@ -23,4 +23,4 @@ This project is licensed under the Fuck Off v0.1-SHUTUP license, which means tha
 Credits
 ---
 
-The majority of the credits go to me, (Dan Woods)[http://twitter.com/danveloper] for my tireless work on implementing this platform in Ratpack. However, some credit must go to (Craig Burke)[http://twitter.com/craigburke1] for his work on developing the properties file that powers the engine at the core of this platform. Additional credits must go to (Dionysus)[http://twitter.com/foaas] for their work on developing the initial platform specification, which is homed at http://www.foaas.com.
+The majority of the credits go to me, [Dan Woods](http://twitter.com/danveloper) for my tireless work on implementing this platform in Ratpack. However, some credit must go to [Craig Burke](http://twitter.com/craigburke1) for his work on developing the properties file that powers the engine at the core of this platform. Additional credits must go to [Dionysus](http://twitter.com/foaas) for their work on developing the initial platform specification, which is homed at http://www.foaas.com.
