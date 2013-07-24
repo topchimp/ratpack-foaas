@@ -14,10 +14,6 @@ props.engine = new SimpleTemplateEngine()
 ratpack {
 	handlers {
 
-        get {
-            get(TemplateRenderer).render "index.html"
-        }
-
         get(":type/:from") {
             def map = [message: props.getRenderedTemplate(pathTokens).message as String, subtitle: pathTokens['from']]
             use (ContentNegotiationCategory) {
@@ -32,6 +28,6 @@ ratpack {
             }
         }
 
-		assets "public"
+		assets "public", ["index.html"] as String[]
 	}
 }
