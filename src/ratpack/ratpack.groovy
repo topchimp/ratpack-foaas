@@ -16,6 +16,9 @@ ratpack {
             def from = pathTokens.p2 ?: pathTokens.p1
 
             def f = service.get(pathTokens.type, from, to)
+            if (f.values().every { it == null }) {
+                clientError 404
+            }
 
             accepts.type("text/plain") {
                 response.send "$f.message $f.subtitle"

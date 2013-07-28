@@ -20,7 +20,8 @@ class FuckOffService {
     }
 
     private String render(String key, Map<?, ?> params) {
-        templateEngine.createTemplate(messages.getProperty("fuckOff.$key")).make(params)
+        def template = messages.getProperty("fuckOff.$key")
+        template ? templateEngine.createTemplate(template).make(params) : null
     }
 
 }
