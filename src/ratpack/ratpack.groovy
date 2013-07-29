@@ -12,6 +12,7 @@ ratpack {
 
     handlers {
         get(":type/:p1/:p2?") { TemplateRenderer renderer, FuckOffService service ->
+
             def to = pathTokens.p2 ? pathTokens.p1 : null
             def from = pathTokens.p2 ?: pathTokens.p1
 

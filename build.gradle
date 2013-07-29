@@ -16,6 +16,10 @@ repositories {
 
 apply plugin: "ratpack-groovy"
 
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
 dependencies {
     springloaded "org.springsource.springloaded:springloaded-core:1.1.1"
 }
