@@ -1,33 +1,34 @@
-import app.ContentNegotiationCategory
-import groovy.text.SimpleTemplateEngine
+import app.FoaasModule
+import app.FuckOffService
 import org.ratpackframework.groovy.templating.TemplateRenderer
 
-import static app.PropertiesHolder._ as props
+import static groovy.json.JsonOutput.toJson
 import static org.ratpackframework.groovy.RatpackScript.ratpack
 
-props.props = new Properties().with {
-    load(getClass().getResourceAsStream("messages.properties"))
-    it
-}
-props.engine = new SimpleTemplateEngine()
-
 ratpack {
+    modules {
+        register new FoaasModule(getClass().getResource("messages.properties"))
+    }
+
     handlers {
+        get(":type/:p1/:p2?") { TemplateRenderer renderer, FuckOffService service ->
+            def to = pathTokens.p2 ? pathTokens.p1 : null
+            def from = pathTokens.p2 ?: pathTokens.p1
 
-        get(":type/:from") {
-            def map = [message: props.getRenderedTemplate(pathTokens).message as String, subtitle: pathTokens['from']]
-            use(ContentNegotiationCategory) {
-                makeFuck map, get(TemplateRenderer)
+            def f = service.get(pathTokens.type, from, to)
+            if (f.values().every { it == null }) {
+                clientError 404
             }
+
+            accepts.type("text/plain") {
+                response.send "$f.message $f.subtitle"
+            }.type("text/html") {
+                renderer.render f, "fuckoff.html"
+            }.type("application/json") {
+                response.send toJson(f)
+            }.send()
         }
 
-        get(":type/:to/:from") {
-            def map = props.getRenderedTemplate(pathTokens)
-            use(ContentNegotiationCategory) {
-                makeFuck map, get(TemplateRenderer)
-            }
-        }
-
-        assets "public", ["index.html"] as String[]
+        assets "public", "index.html"
     }
 }
