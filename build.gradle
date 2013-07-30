@@ -20,6 +20,16 @@ configurations.all {
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }
 
+ext {
+    authors = [
+            'Dan Woods',
+            'Luke Daley',
+            'Eric Ridge'
+    ]
+}
+
+println "Ratpack FOAAS - By: ${authors.join(', ')}"
+
 dependencies {
     springloaded "org.springsource.springloaded:springloaded-core:1.1.1"
 }

@@ -37,4 +37,15 @@ class FunctionalSpec extends ScriptAppSpec {
         then:
         response.statusCode == 404
     }
+
+    def "pathtokens are properly encoded"() {
+        when:
+        request.header("Accept", "text/html")
+
+        then:
+        with(get("blink182/generation/fucking%20heart")) {
+            !body.asString().contains("%20")
+        }
+
+    }
 }

@@ -1,0 +1,4 @@
+moduleName=ratpack-foaas
+moduleVersion=0-1-KICKASS.FINAL.MASTER.MOTHAFUCKA
+extensionClasses=ext.StringExtensions
+staticExtensionClasses=
