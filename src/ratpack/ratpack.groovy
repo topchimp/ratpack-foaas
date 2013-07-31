@@ -19,6 +19,7 @@ ratpack {
             def f = service.get(pathTokens.type, from, to)
             if (f.values().every { it == null }) {
                 clientError 404
+                return
             }
 
             accepts.type("text/plain") {
