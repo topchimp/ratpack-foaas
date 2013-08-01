@@ -28,7 +28,7 @@ ratpack {
                 renderer.render f, "fuckoff.html"
             }.type("application/json") {
                 response.send toJson(f)
-            }.send()
+            }.build()
         }
 
         assets "public", "index.html"
