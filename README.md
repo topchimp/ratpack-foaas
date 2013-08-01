@@ -1,6 +1,8 @@
 FOaaS (Fuck Off as a Service)
 =============
 
+[![Build Status](https://drone.io/github.com/danveloper/ratpack-foaas/status.png)](https://drone.io/github.com/danveloper/ratpack-foaas/latest)
+
 In modern culture, fucking off can sometimes be a difficult message to convey. Sometimes you may not feel like you have the gusto, ambition, or appropriate faculties to offer a truly degenerative fuck off to somebody else. Most likely, compounding your lack of self-confidence in the fucking off department with a terribly busy schedule means that you are unable to properly dedicate the time to improving your delivery of fuck offs. But you shouldn't be dismayed by your lack of time and dedication; there should be another way that you can get your message out there in an effective way, without all the overhead of managing yourself to that skill level...
 
 To that end, you should be able to make use cloud technology to out-source your delivery practices, so that you can get have the proper fucking off that you deserve for all your hard work.
