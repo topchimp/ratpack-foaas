@@ -11,8 +11,8 @@ ratpack {
         register new FoaasModule(getClass().getResource("messages.properties"))
     }
 
-    handlers {
-        get(":type/:p1/:p2?") { TemplateRenderer renderer, FuckOffService service ->
+    handlers { FuckOffService service ->
+        get(":type/:p1/:p2?") { TemplateRenderer renderer ->
 
             def to = (pathTokens.p2 ? pathTokens.p1 : null)?.decodeHtml()
             def from = (pathTokens.p2 ?: pathTokens.p1)?.decodeHtml()
