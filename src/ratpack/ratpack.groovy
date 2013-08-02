@@ -20,18 +20,17 @@ ratpack {
             def f = service.get(pathTokens.type, from, to)
             if (f.values().every { it == null }) {
                 clientError 404
-                return
-            }
-
-            with(accepts) {
-                type("text/plain") {
-                    response.send "$f.message $f.subtitle"
-                }
-                type("text/html") {
-                    renderer.render f, "fuckoff.html"
-                }
-                type("application/json") {
-                    response.send toJson(f)
+            } else {
+                with(accepts) {
+                    type("text/plain") {
+                        response.send "$f.message $f.subtitle"
+                    }
+                    type("text/html") {
+                        renderer.render f, "fuckoff.html"
+                    }
+                    type("application/json") {
+                        response.send toJson(f)
+                    }
                 }
             }
         }
