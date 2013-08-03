@@ -4,14 +4,15 @@ import org.ratpackframework.groovy.templating.TemplateRenderer
 
 import static groovy.json.JsonOutput.toJson
 import static org.ratpackframework.groovy.RatpackScript.ratpack
+import static org.ratpackframework.groovy.Util.with
 
 ratpack {
     modules {
         register new FoaasModule(getClass().getResource("messages.properties"))
     }
 
-    handlers {
-        get(":type/:p1/:p2?") { TemplateRenderer renderer, FuckOffService service ->
+    handlers { FuckOffService service ->
+        get(":type/:p1/:p2?") { TemplateRenderer renderer ->
 
             def to = (pathTokens.p2 ? pathTokens.p1 : null)?.decodeHtml()
             def from = (pathTokens.p2 ?: pathTokens.p1)?.decodeHtml()
@@ -19,16 +20,19 @@ ratpack {
             def f = service.get(pathTokens.type, from, to)
             if (f.values().every { it == null }) {
                 clientError 404
-                return
+            } else {
+                with(accepts) {
+                    type("text/plain") {
+                        response.send "$f.message $f.subtitle"
+                    }
+                    type("text/html") {
+                        renderer.render f, "fuckoff.html"
+                    }
+                    type("application/json") {
+                        response.send toJson(f)
+                    }
+                }
             }
-
-            accepts.type("text/plain") {
-                response.send "$f.message $f.subtitle"
-            }.type("text/html") {
-                renderer.render f, "fuckoff.html"
-            }.type("application/json") {
-                response.send toJson(f)
-            }.build()
         }
 
         assets "public", "index.html"
