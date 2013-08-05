@@ -48,4 +48,20 @@ class FunctionalSpec extends ScriptAppSpec {
         }
 
     }
+
+    def "keep calm"() {
+        when:
+        request.header("Accept", "*/*")
+
+        then:
+        getText("keepcalm/to/from") == "Keep Calm to and Fuck Off - from"
+    }
+
+    def "stevie wonder"() {
+        when:
+        request.header("Accept", "*/*")
+
+        then:
+        getText("steviewonder/to/from") == "I just called, to say..........to FUCK OFF! - from"
+    }
 }
