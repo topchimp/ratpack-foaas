@@ -1,10 +1,7 @@
 import app.FoaasModule
 import app.FuckOffService
-import org.ratpackframework.groovy.templating.TemplateRenderer
 
-import static groovy.json.JsonOutput.toJson
 import static org.ratpackframework.groovy.RatpackScript.ratpack
-import static org.ratpackframework.groovy.Util.with
 
 ratpack {
     modules {
@@ -12,26 +9,16 @@ ratpack {
     }
 
     handlers { FuckOffService service ->
-        get(":type/:p1/:p2?") { TemplateRenderer renderer ->
+        get(":type/:p1/:p2?") {
 
             def to = (pathTokens.p2 ? pathTokens.p1 : null)?.decodeHtml()
             def from = (pathTokens.p2 ?: pathTokens.p1)?.decodeHtml()
 
             def f = service.get(pathTokens.type, from, to)
-            if (f.values().every { it == null }) {
-                clientError 404
+            if (f) {
+                render f
             } else {
-                with(accepts) {
-                    type("text/plain") {
-                        response.send "$f.message $f.subtitle"
-                    }
-                    type("text/html") {
-                        renderer.render f, "fuckoff.html"
-                    }
-                    type("application/json") {
-                        response.send toJson(f)
-                    }
-                }
+                clientError 404
             }
         }
 
