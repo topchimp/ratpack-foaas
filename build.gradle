@@ -24,7 +24,8 @@ ext {
     authors = [
             'Dan Woods',
             'Luke Daley',
-            'Eric Ridge'
+            'Eric Ridge',
+            'Russell Hart'
     ]
 }
 
