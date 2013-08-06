@@ -44,7 +44,9 @@ fi
 
 cd $BUILD_DIR
 
-export JAVA_HOME="~/.jdk7"
+echo "Setting Java Home to $BUILD_DIR/.jdk7 ..."
+
+export JAVA_HOME="$BUILD_DIR/.jdk7"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 echo ""
