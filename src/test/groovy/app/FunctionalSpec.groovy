@@ -1,7 +1,9 @@
 package app
 
 import org.ratpackframework.test.ScriptAppSpec
+import spock.lang.Unroll
 
+@Unroll
 class FunctionalSpec extends ScriptAppSpec {
 
     def "content negotiation"() {
@@ -46,22 +48,19 @@ class FunctionalSpec extends ScriptAppSpec {
         with(get("blink182/generation/fucking%20heart")) {
             !body.asString().contains("%20")
         }
-
     }
 
-    def "keep calm"() {
-        when:
-        request.header("Accept", "*/*")
+	def "variant text is produced by #path"() {
+		when:
+		request.header("Accept", "*/*")
 
-        then:
-        getText("keepcalm/to/from") == "Keep Calm to and Fuck Off - from"
-    }
+		then:
+		getText(path) == expectedText
 
-    def "stevie wonder"() {
-        when:
-        request.header("Accept", "*/*")
-
-        then:
-        getText("steviewonder/to/from") == "I just called, to say..........to FUCK OFF! - from"
-    }
+		where:
+		path                   | expectedText
+		"keepcalm/to/from"     | "Keep Calm to and Fuck Off - from"
+		"steviewonder/to/from" | "I just called, to say..........to FUCK OFF! - from"
+		"malcolmtucker/from"   | "I will tear your fucking skin off, I will wear it to your mother's birthday party, and rub your nuts up and down her leg whilst whistling Bohemian fucking Rhapsody. Right? - from"
+	}
 }
