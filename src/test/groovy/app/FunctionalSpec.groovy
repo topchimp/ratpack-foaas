@@ -62,5 +62,6 @@ class FunctionalSpec extends ScriptAppSpec {
 		"keepcalm/to/from"     | "Keep Calm to and Fuck Off - from"
 		"steviewonder/to/from" | "I just called, to say..........to FUCK OFF! - from"
 		"malcolmtucker/from"   | "I will tear your fucking skin off, I will wear it to your mother's birthday party and rub your nuts up and down her leg whilst whistling Bohemian fucking Rhapsody. Right? - from"
+		"swearengen/E.B./Al"   | "I will profane your fucking remains, E.B.! - Al"
 	}
 }
