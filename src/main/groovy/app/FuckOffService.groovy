@@ -12,10 +12,16 @@ class FuckOffService {
         this.templateEngine = templateEngine
     }
 
-    Map<String, String> get(String key, String from, String to) {
+    FuckOff get(String key, String from, String to) {
         def params = [from: from, to: to]
-        ["message", "subtitle"].collectEntries {
+        def m = ["message", "subtitle"].collectEntries {
             [it, render("${key}.${it}", params)]
+        }
+
+        if (m.values().every { it == null }) {
+            null
+        } else {
+            new FuckOff(m.message, m.subtitle)
         }
     }
 
