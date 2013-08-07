@@ -8,7 +8,6 @@ import static groovy.json.JsonOutput.toJson
 import static org.ratpackframework.groovy.Util.with
 import static org.ratpackframework.groovy.templating.Template.groovyTemplate
 
-import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter
