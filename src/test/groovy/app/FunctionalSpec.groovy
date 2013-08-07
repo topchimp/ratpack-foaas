@@ -74,6 +74,7 @@ class FunctionalSpec extends ScriptAppSpec {
 		"malcolmtucker/from"   | "I will tear your fucking skin off, I will wear it to your mother's birthday party and rub your nuts up and down her leg whilst whistling Bohemian fucking Rhapsody. Right? - from"
 		"justinbieber/from"    | "There's gonna be times in your life when people say you can't do something. And there's gonna be times in your life when people say that you can't live your dreams. This is what I tell them: FUCK OFF! - from"
 		"swearengen/E.B./Al"   | "I will profane your fucking remains, E.B.! - Al"
-        "arthur/to/from"       | "How shall to fuck off, O Lord? - from"
+		"arthur/to/from"       | "How shall to fuck off, O Lord? - from"
+		"imsorry/from"         | "I'm sorry, you appear to have mistaken me for someone who gives a fuck. - from" 
     }
 }
